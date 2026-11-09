@@ -6,6 +6,9 @@
 <title>Arankesh Mahadevan</title>
 <meta name="description" content="Arankesh Mahadevan builds free, open-source software in his spare time: OpenSaberQ3, Linux hardware fixes, and self-hosted tools. Unpaid and non-commercial.">
 <meta name="color-scheme" content="light dark">
+<script>
+  try { var t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
 <meta property="og:title" content="Arankesh Mahadevan">
 <meta property="og:description" content="I build free, open-source things for the devices I own.">
 <meta property="og:image" content="https://testyfishy.github.io/assets/og.jpg">
@@ -21,6 +24,10 @@
     <a href="#work">Work</a>
     <a href="#me">About</a>
     <a href="#contact">Contact</a>
+    <button class="theme" type="button" aria-label="Switch to dark mode" title="Light or dark">
+      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+    </button>
   </nav>
 </header>
 
@@ -28,7 +35,7 @@
   <section class="hero">
     <p class="eyebrow">Arankesh Mahadevan, MD</p>
     <h1>I build open-source things for the devices I own.</h1>
-    <p class="lede">Hi, I'm Arankesh. When something I use doesn't work the way I want, I take it apart, fix it, and share the fix. Everything I make is free and open source.</p>
+    <p class="lede">Hi, I'm Arankesh. I can stay with a problem I care about for days. When something I use doesn't work the way I want, I take it apart, fix it, and share the fix. Everything I make is free and open source.</p>
     <p class="aside">By day, I'm a neurology resident in Salt Lake City.</p>
     <p class="actions">
       <a class="btn" href="#work">See my work</a>
@@ -81,6 +88,19 @@
       </li>
     </ul>
     <p class="more"><a href="https://github.com/testyfishy?tab=repositories">All public repositories &rarr;</a></p>
+
+    <h2 class="label bench-label">On my bench</h2>
+    <ul class="bench">
+      <li>
+        <strong>A brain lamp.</strong> A life-size, translucent 3D print of a human brain and spinal cord, made from MRI data, with an anatomically correct cauda equina. It was meant for Halloween. It's still on the bench.
+      </li>
+      <li>
+        <strong>Hermes.</strong> A private assistant that runs on my own hardware and helps me keep up with email and my calendar. Only its <a href="hermes/">homepage and privacy policy</a> are public.
+      </li>
+      <li>
+        <strong>A home media server.</strong> A mini PC that serves my own collection around the house.
+      </li>
+    </ul>
   </section>
 
   <section id="unpaid">
@@ -99,10 +119,18 @@
   <section id="me">
     <h2 class="label">About me</h2>
     <div class="about">
-      <p>I studied medicine in India and now live in Salt Lake City. I'm a neurology resident at the University of Utah, where I care for people with stroke. (<a href="https://medicine.utah.edu/neurology/residents/arankesh-mahadevan">My resident profile</a>.)</p>
-      <p>Medicine taught me to write things down and check my work. I build the same way. Each project has notes on what I tried, what broke, and the numbers behind each change.</p>
-      <p>Away from the hospital and the keyboard, I like traveling, long scenic walks, video games, music, and time with my family.</p>
+      <p>I studied medicine in Tamil Nadu, India, and now live in Salt Lake City. I'm a neurology resident at the University of Utah, where I care for people with stroke. (<a href="https://medicine.utah.edu/neurology/residents/arankesh-mahadevan">My resident profile</a>.)</p>
+      <p>I'm mostly self-taught. I learned statistics and R one research project at a time, and I learn software the same way. Medicine taught me to write things down and check my work, so each project has notes on what I tried, what broke, and the numbers behind each change.</p>
     </div>
+    <h3 class="sub-label">A few more things</h3>
+    <ul class="facts">
+      <li>I cook far more than one household needs. Most of it ends up in the residents' room.</li>
+      <li>I'm learning to swim, because one day I want to take my own boat across an ocean.</li>
+      <li>Cars and bikes: a 1986 Corvette, my Mitsubishi, and a Honda CB650R.</li>
+      <li>My headphone collection needed its own amp and DAC.</li>
+      <li>My desk runs four monitors off one Thunderbolt dock. Apparently that is who I am.</li>
+      <li>I hike, I run, and I speak English and Tamil.</li>
+    </ul>
   </section>
 
   <section id="help">
@@ -125,6 +153,22 @@
   </section>
 </main>
 
+<script>
+  (function () {
+    var root = document.documentElement, btn = document.querySelector(".theme");
+    var dark = window.matchMedia("(prefers-color-scheme: dark)");
+    function current() { return root.dataset.theme || (dark.matches ? "dark" : "light"); }
+    function label() { btn.setAttribute("aria-label", current() === "dark" ? "Switch to light mode" : "Switch to dark mode"); }
+    btn.addEventListener("click", function () {
+      var next = current() === "dark" ? "light" : "dark";
+      root.dataset.theme = next;
+      try { localStorage.setItem("theme", next); } catch (e) {}
+      label();
+    });
+    dark.addEventListener("change", label);
+    label();
+  })();
+</script>
 <footer>
   <p>Arankesh Mahadevan. A personal, non-commercial site. I receive no payment for any project here. Views are my own, not my employer's. Nothing here is medical advice.</p>
 </footer>
