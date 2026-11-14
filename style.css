@@ -181,3 +181,4 @@ footer p {
   .feature-body { padding: 1.25rem; }
   dl, .contact li { grid-template-columns: 4.5rem 1fr; }
 }
+.fine { font-size: 0.85rem; color: var(--muted); }
