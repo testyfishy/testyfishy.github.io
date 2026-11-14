@@ -142,6 +142,7 @@ h3 { margin: 0 0 0.5rem; font-size: 1.4rem; letter-spacing: -0.02em; }
 }
 .projects li > a { font-weight: 600; text-decoration: none; color: var(--fg); }
 .projects li > a:hover { color: var(--accent); }
+.projects p + p { margin-top: 0.5rem; }
 .projects p { grid-column: 1 / -1; margin: 0; color: var(--muted); font-size: 0.97rem; }
 .tag { grid-row: 1; grid-column: 2; color: var(--muted); font-size: 0.8rem; align-self: center; }
 .more { margin: 1.25rem 0 0; font-weight: 600; font-size: 0.95rem; }
